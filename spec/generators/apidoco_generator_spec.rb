@@ -1,15 +1,10 @@
+require 'rails_helper'
 require 'rails/generators'
 require 'generators/apidoco_generator'
 require 'generator_spec'
 
 describe ApidocoGenerator, type: :generator do
-  def remove_docs_directory
-    FileUtils.rm_rf("#{Rails.root}/docs")
-  end
-
-  after(:all) do
-    remove_docs_directory
-  end
+  include_context('clear_docs_directory')
 
   context 'default actions' do
     it 'creates a crud documentation files' do
